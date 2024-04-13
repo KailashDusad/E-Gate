@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E Gate</title>
+</head>
+<body>
+    <form action="/permanent" method="post">
+        <input type="email" name='email' placeholder="Enter your email id" required>
+        <input type="password" name='password' placeholder="Enter your password" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="image" id="qr">
+        
+    </div>
+    <script>
+        var qrI = document.getElementById('qr');
+        qrI.innerHTML = '<img src="' + qrImage + '" alt="User QR Image">';
+    </script>
+</body>
+</html>

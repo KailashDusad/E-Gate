@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+#Welcome{
+    text-align: center;
+    background-color: #f1f1f1;
+}
+.box{
+    width: 100%;
+    height: 100vh;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.box > div{
+    margin: 20px 10px;
+    padding: 20px 10px;
+}
+.box a{
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 10px;
+    transition: 0.5s;
+}
+.box a:hover{
+    background-color: #000;
+    color: #fff;
+}

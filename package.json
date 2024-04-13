@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/KailashDusad/E-Gate#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.19.2",
-    "pug": "^3.0.2"
+    "firebase": "^10.11.0",
+    "firebase-admin": "^12.0.0",
+    "pug": "^3.0.2",
+    "qrcode": "^1.5.3"
   }
 }
