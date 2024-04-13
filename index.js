@@ -5,6 +5,7 @@ const cors = require('cors');
 const {User} = require('./config');
 const admin = require('firebase-admin');
 const qr = require('qrcode');
+const fs = require('fs');
 
 
 app.use('/static', express.static(path.join(__dirname, 'static')));
@@ -62,13 +63,22 @@ app.post('/permanent', async (req, res) => {
 
         let qrString = JSON.stringify({email: data.email, uid: userResponse.uid});
             
-            qr.toFile("user.png",qrString, function (err) {
+            await qr.toFile("user.png", qrString);
+            const sourcePath = 'user.png';
+            const destinationPath = path.join(__dirname, 'static', 'user.png');
+
+            fs.copyFile(sourcePath, destinationPath, (err) => {
                 if (err) {
-                    console.error(err);
-                    return;
+                    console.error('Error copying file:', err);
+                    // Handle the error
+                } else {
+                    console.log('File copied successfully');
+                    // Continue with your code
                 }
             });
             res.render('permanent.pug', { message: 'User created successfully.', qrImage: 'user.png' });
+
+
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ error: 'An error occurred while creating the user.', details: error.message });
