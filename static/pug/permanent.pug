@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E Gate</title>
+    <link rel="stylesheet" href="../static/style/permanent.css">
 </head>
 <body>
-    <form action="/permanent" method="post">
-        <input type="email" name='email' placeholder="Enter your email id" required>
-        <input type="password" name='password' placeholder="Enter your password" required>
+    
+    <div class="login-page">
+      <h2>Login Details</h2>
+      <form class="login-form" action="/permanent" method="post">
+        <input type="email" name='email' placeholder="Email" >
+        <input type="password" name='password' placeholder="Password" >
         <button type="submit">Submit</button>
-    </form>
-    <div class="image" id="qr">
+       
+      </form>
+    </div>
+    <div class="image" id="qr" style="width: 100%; display: flex; justify-content: center; align-items: center;">
         <img src="../static/user.png" alt="">
     </div>
-    //- <script>
-    //-     var qrI = document.getElementById('qr');
-    //-     qrI.innerHTML = `<img src=" + ${!{qrImage}} + " alt="User QR Image">`;
-    //- </script>
 </body>
 </html>
