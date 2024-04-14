@@ -81,59 +81,60 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
 
   async function(req, res) {
-    // const userG = req.user;
-    // if (userG.email.endsWith('@iitgn.ac.in')) {
-    //     // User.create({ email: user.email, googleId: user.id })
-    //     const userResponseG = await admin.auth().createUser({
-    //         email: userG.email,
-    //         googleId: userG.id,
-    //         emailVerified: false,
-    //         disabled: false,
-    //       });
+    console.log('User:', req.user.emails[0].value);
+    const userG = req.user;
+    if (userG.emails[0].value.endsWith('@iitgn.ac.in')) {
+        const userResponseG = await admin.auth().createUser({
+            email: userG.emails[0].value,
+            name: userG.name
+        });
       
-    //       const dbG = admin.firestore();
-    //       const visitorsG = dbG.collection('users').doc(userResponseG.uid);
-    //       visitorsG.get().then((docSnapshot) => {
-    //         if (!docSnapshot.exists) {
-    //           visitorsG.set({
-    //             email: userG.email,
-    //             uid: userResponse.uid,
-    //           }).catch((error) => {
-    //             console.log("Error setting document:", error);
-    //           });
-    //         } else {
-    //           visitorsG.update({
-    //             email: userG.email,
-    //             uid: userResponse.uid,
-    //           }).catch((error) => {
-    //             console.log("Error updating document:", error);
-    //           });
-    //         }
-    //       }).catch((error) => {
-    //         console.log("Error getting document:", error);
-    //       });
-    //       let qrString = JSON.stringify({ email: userG.email, uid: userResponse.uid });
+        const dbG = admin.firestore();
+        const visitorsG = dbG.collection('users').doc(userResponseG.uid);
+        visitorsG.get()
+            .then((docSnapshot) => {
+                if (!docSnapshot.exists) {
+                    visitorsG.set({
+                        email: userG.emails[0].value,
+                        uid: userResponseG.uid, // Fixed variable name
+                    }).catch((error) => {
+                        console.log("Error setting document:", error);
+                    });
+                } else {
+                    visitorsG.update({
+                        email: userG.emails[0].value,
+                        uid: userResponseG.uid, // Fixed variable name
+                    }).catch((error) => {
+                        console.log("Error updating document:", error);
+                    });
+                }
+            })
+            .catch((error) => {
+                console.log("Error getting document:", error);
+            });
+        
+        let qrString = JSON.stringify({ email: userG.emails[0].value, uid: userResponseG.uid }); // Fixed variable name
 
-    //     await qr.toFile("userG.png", qrString);
-    //     const sourcePathG = 'userG.png';
-    //     const destinationPathG = path.join(__dirname, 'static', 'userG.png');
+        await qr.toFile("userG.png", qrString);
+        const sourcePathG = 'userG.png';
+        const destinationPathG = path.join(__dirname, 'static', 'userG.png');
 
-    //     fs.copyFile(sourcePathG, destinationPathG, (err) => {
-    //     if (err) {
-    //         console.error('Error copying file:', err);
-    //     } else {
-    //         console.log('File copied successfully');
-    //     }
-    //     });
-    //     res.redirect('/permanent');
+        fs.copyFile(sourcePathG, destinationPathG, (err) => {
+            if (err) {
+                console.error('Error copying file:', err);
+            } else {
+                console.log('File copied successfully');
+            }
+        });
+        
+        res.redirect('/permanent');
 
-    // } else {
-    //     res.render('popup.pug', { message: 'Only IIT GN students are allowed.' });
-    //   }
+    } else {
+        return res.json({ error: 'Invalid email domain. Only @iitgn.ac.in is allowed.' });
+    }
+});
 
-    res.redirect('/permanent');
-  }
-);
+
 
 app.get('/logout', function(req, res){
   req.logout();
