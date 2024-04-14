@@ -20,7 +20,8 @@ if (!admin.apps.length) {
 passport.use(new GoogleStrategy({
     clientID: '757561340490-qmsjjo78o48i9ll4n1thagp5hdg2a58h.apps.googleusercontent.com',
     clientSecret: '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',
-    callbackURL: 'http://localhost:1304/auth/google/callback',
+    callbackURL: 'https://e-gate.onrender.com//auth/google/callback',
+    // callbackURL: 'http://localhost:1304/auth/google/callback',
     userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
     scope: ['email', 'profile']
 },
