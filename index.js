@@ -20,8 +20,8 @@ if (!admin.apps.length) {
 passport.use(new GoogleStrategy({
     clientID: '757561340490-qmsjjo78o48i9ll4n1thagp5hdg2a58h.apps.googleusercontent.com',
     clientSecret: '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',
-    callbackURL: 'https://e-gate.onrender.com//auth/google/callback',
-    // callbackURL: 'http://localhost:1304/auth/google/callback',
+    // callbackURL: 'https://e-gate.onrender.com//auth/google/callback',
+    callbackURL: 'https://e-gate.onrender.com/auth/google/callback',
     userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
     scope: ['email', 'profile']
 },
@@ -112,9 +112,9 @@ app.get('/auth/google/callback',
         
         let qrString = JSON.stringify({ email: userG.emails[0].value, name: userG.name.givenName + " " + userG.name.familyName,uid: userResponseG.uid }); // Fixed variable name
 
-        await qr.toFile("userG.png", qrString);
-        const sourcePathG = 'userG.png';
-        const destinationPathG = path.join(__dirname, 'static', 'userG.png');
+        await qr.toFile("user.png", qrString);
+        const sourcePathG = 'user.png';
+        const destinationPathG = path.join(__dirname, 'static', 'user.png');
 
         fs.copyFile(sourcePathG, destinationPathG, (err) => {
             if (err) {
