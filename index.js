@@ -10,16 +10,13 @@ const fs = require('fs');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-// Check if Firebase Admin SDK is not already initialized
 if (!admin.apps.length) {
-    // Initialize Firebase Admin SDK
     const serviceAccount = require('./egate-27caa-firebase-adminsdk-lrl0e-50bd2f82a5.json');
     admin.initializeApp({
         credential: admin.credential.cert(serviceAccount)
     });
 }
 
-// Configure Passport.js
 passport.use(new GoogleStrategy({
     clientID: '757561340490-qmsjjo78o48i9ll4n1thagp5hdg2a58h.apps.googleusercontent.com',
     clientSecret: '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',
@@ -28,7 +25,6 @@ passport.use(new GoogleStrategy({
     scope: ['email', 'profile']
 },
 function(accessToken, refreshToken, profile, cb) {
-    // This function will be called after successful authentication
     return cb(null, profile);
 }
 ));
@@ -270,8 +266,3 @@ app.listen(process.env.PORT || 1304, () => {
   console.log('running on port 1304');
 });
 
-
-
-
-// clientID: '757561340490-qmsjjo78o48i9ll4n1thagp5hdg2a58h.apps.googleusercontent.com',
-//     clientSecret: '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',
