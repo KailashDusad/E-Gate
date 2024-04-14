@@ -74,3 +74,7 @@
       width: 60%;
     }
   }
+  #external{
+    background-color: rgb(197, 102, 102);
+    color: black;
+  }
