@@ -18,8 +18,8 @@ if (!admin.apps.length) {
 }
 
 passport.use(new GoogleStrategy({
-    clientID: '757561340490-qmsjjo78o48i9ll4n1thagp5hdg2a58h.apps.googleusercontent.com',
-    clientSecret: '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',
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     // callbackURL: 'https://e-gate.onrender.com//auth/google/callback',
     callbackURL: 'https://e-gate.onrender.com/auth/google/callback',
     userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
@@ -30,7 +30,7 @@ function(accessToken, refreshToken, profile, cb) {
 }
 ));
 app.use(session({
-    secret: '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',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }));
