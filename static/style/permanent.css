@@ -74,7 +74,21 @@
       width: 60%;
     }
   }
-  #external{
-    background-color: rgb(197, 102, 102);
+  #google{
+    text-decoration: none;
     color: black;
+    font-size: 1.1rem;
+    border: 2px solid black;
+    padding: 10px 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+
+  }
+  #google img{
+    width: 24px;
+    height: 24px;
+    margin-right: 5%;
   }

@@ -9,6 +9,7 @@
     justify-content: center;
     height: 100vh;
     text-align: center;
+    width: 100%;
   }
   
   .welcome-page h1 {
@@ -23,15 +24,20 @@
   
   /* Styles for the Entry component */
   .info-box {
+    width: 100%;
     background-color: #f2f2f2; /* Light background color */
     padding: 30px; /* Increased padding */
     border-radius: 20px; /* Increased border radius */
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Add shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
   .bt {
     display: block;
-    width: 100%;
+    width: 25%;
     padding: 15px; /* Increased button padding */
     margin-bottom: 15px; /* Increased button margin */
     border: none;

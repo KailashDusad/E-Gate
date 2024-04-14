@@ -81,9 +81,9 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
 
   async function(req, res) {
-    console.log('User:', req.user.emails[0].value);
     const userG = req.user;
     if (userG.emails[0].value.endsWith('@iitgn.ac.in')) {
+
         const userResponseG = await admin.auth().createUser({
             email: userG.emails[0].value,
             name: userG.name
@@ -113,7 +113,7 @@ app.get('/auth/google/callback',
                 console.log("Error getting document:", error);
             });
         
-        let qrString = JSON.stringify({ email: userG.emails[0].value, uid: userResponseG.uid }); // Fixed variable name
+        let qrString = JSON.stringify({ email: userG.emails[0].value, name: userG.name.givenName + " " + userG.name.familyName,uid: userResponseG.uid }); // Fixed variable name
 
         await qr.toFile("userG.png", qrString);
         const sourcePathG = 'userG.png';

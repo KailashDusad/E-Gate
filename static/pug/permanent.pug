@@ -7,24 +7,21 @@
     <link rel="stylesheet" href="../static/style/permanent.css">
 </head>
 <body>
-    <div class="external">
-      <h3 id="external"></h3>
-    </div>
+    
     <div class="login-page">
       <h2>Login Details</h2>
       <form class="login-form" action="/permanent" method="post">
+        <a href="/auth/google" id="google"><img src="../static/google.webp" alt="">Continue with Google</a>
+        <h3 style="text-align: center;">OR</h3>
         <input type="email" name='email' placeholder="Email" >
         <input type="password" name='password' placeholder="Password" >
         <button type="submit">Submit</button>
-        <a href="/auth/google">Continue with Google</a> <!-- Google authentication button -->
       </form>
     </div>
     <div class="image" id="qr" style="width: 100%; display: flex; justify-content: center; align-items: center;">
         <img src="../static/user.png" alt="">
+        <img src="../static/userG.png" alt="">
     </div>
-    <script>
-      var externalw = document.getElementById('external');
-      externalw.innerHTML = !{external};
-    </script>
+    
 </body>
 </html>

@@ -1,0 +1,23 @@
+#reader button {
+  width: 80%;
+  padding: 12px;
+  background-color: rgb(190, 10, 10);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+#reader{
+    border-radius: 10px;
+    border: 2px solid black;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+}
