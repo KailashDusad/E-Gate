@@ -17,6 +17,7 @@
     </form> -->
 
     <div class="signup-page">
+      <h2>Scroll Down <span id="message"></span></h2>
       <h2>Fiil the Details</h2>
       <form class="signup-form" action="/visitors" method="post">
         <input type="text" name='name' placeholder="Full Name" >
@@ -32,5 +33,11 @@
     <div class="image" id="qr" style="width: 100%; display: flex; justify-content: center; align-items: center;">
         <img src="../static/visitors.png" alt="">
     </div>
+    script.
+        var message = document.getElementById('message');
+        var messageSuccess = `!{message}`;
+        if(messageSuccess){
+            message.innerHTML = messageSuccess;
+        }
 </body>
 </html>
