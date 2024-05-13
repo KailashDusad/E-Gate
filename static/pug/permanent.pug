@@ -9,6 +9,7 @@
 <body>
     
     <div class="login-page">
+      <h2 id="message"></h2>
       <h2>Login Details</h2>
       <form class="login-form" action="/permanent" method="post">
         <a href="/auth/google" id="google"><img src="../static/google.webp" alt="">Continue with Google</a>
@@ -22,6 +23,11 @@
         <img src="../static/user.png" alt="">
         <img src="../static/userG.png" alt="">
     </div>
-    
+    script.
+        var message = document.getElementById('message');
+        var messageSuccess = `!{message}`;
+        if(messageSuccess){
+            message.innerHTML = messageSuccess;
+        }
 </body>
 </html>
