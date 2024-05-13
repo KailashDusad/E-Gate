@@ -9,7 +9,7 @@
 <body>
     
     <div class="login-page">
-      <h2>Scroll Down <span id="message"></span></h2>
+      <h2 id="message"></h2>
       <h2>Login Details</h2>
       <form class="login-form" action="/permanent" method="post">
         <a href="/auth/google" id="google"><img src="../static/google.webp" alt="">Continue with Google</a>
@@ -27,7 +27,7 @@
         var message = document.getElementById('message');
         var messageSuccess = `!{message}`;
         if(messageSuccess){
-            message.innerHTML = messageSuccess;
+            message.innerHTML = 'Scroll Down' + messageSuccess;
         }
 </body>
 </html>
